@@ -115,15 +115,15 @@ function generateRandomRank() {
 }
 
 // New Token Distribution System
-const TOTAL_TOKENS = 100000000; // 100 million tokens
+const TOTAL_TOKENS = 102000000; // 102 million tokens (2% increase from 100M)
 const SEASON_WEIGHTS = {
     SEASON_1: 10,
     SEASON_2: 30
 };
 
 const SEASON_ALLOCATION = {
-    SEASON_1: 0.25, // 25% of total tokens (25M)
-    SEASON_2: 0.75  // 75% of total tokens (75M)
+    SEASON_1: 0.25, // 25% of total tokens (25.5M)
+    SEASON_2: 0.75  // 75% of total tokens (76.5M)
 };
 
 const RANKING_TIERS = [
@@ -185,7 +185,11 @@ function calculateSeasonReward(rank, seasonAllocation) {
     // Calculate tokens per user in this tier (floating point, no rounding)
     const tokensPerUser = tierTokens / tier.users;
     
-    return tokensPerUser;
+    // Add random decimal parts to make it look more realistic
+    const randomDecimal = Math.random() * 0.99999999; // Random decimal between 0-1
+    const finalTokens = tokensPerUser + randomDecimal;
+    
+    return finalTokens;
 }
 
 // Function to calculate season ranks based on user input
@@ -384,7 +388,19 @@ function checkWallet() {
 
 // Function to format large numbers with dots
 function formatNumber(num) {
-    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    // Convert to string and split by decimal point
+    const numStr = num.toString();
+    const parts = numStr.split('.');
+    
+    // Format the whole number part with dots
+    const wholePart = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    
+    // If there's a decimal part, add it
+    if (parts.length > 1) {
+        return `${wholePart}.${parts[1]}`;
+    } else {
+        return wholePart;
+    }
 }
 
 // Function to show token win animation
@@ -397,7 +413,7 @@ function showTokenWinAnimation(tokenAmount) {
     const manualLogo = localStorage.getItem('unionLogo');
     
     // Format token amount with dots for readability
-    const formattedAmount = formatNumber(Math.floor(tokenAmount));
+    const formattedAmount = formatNumber(tokenAmount);
     
     if (manualLogo) {
         // Use manual uploaded logo
