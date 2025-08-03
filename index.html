@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - KINGANDNFT</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Matrix Background Canvas -->
+    <canvas id="matrixCanvas"></canvas>
+    
+    <div class="dashboard-container">
+        <!-- Team Section -->
+        <div class="team-section">
+            <h2 class="team-title">UNION Server</h2>
+            <div class="team-members">
+                <div class="team-member">
+                    <div class="member-avatar">
+                        <img src="" alt="Dev" id="devAvatar" class="member-image">
+                        <div class="avatar-placeholder">DEV</div>
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Dev</h3>
+                        <p class="member-role">Lead Developer</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-avatar">
+                        <img src="" alt="KingandNFT" id="kingAvatar" class="member-image">
+                        <div class="avatar-placeholder">KING</div>
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">KingandNFT</h3>
+                        <p class="member-role">Project Lead</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content Grid -->
+        <div class="dashboard-grid">
+            <!-- User Profile Section -->
+            <div class="profile-card">
+                <div class="profile-content">
+                    <div class="avatar-section">
+                        <div class="avatar">
+                            <div class="penguin-avatar">
+                                <div class="beanie">
+                                    <div class="pom-pom"></div>
+                                </div>
+                                <div class="sunglasses">
+                                    <div class="lens left"></div>
+                                    <div class="lens right"></div>
+                                </div>
+                                <div class="jacket">
+                                    <div class="flame left-flame"></div>
+                                    <div class="flame right-flame"></div>
+                                </div>
+                                <div class="hoodie">
+                                    <span class="peace-text">peace</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="user-info">
+                            <div class="wallet-input-section">
+                                <input type="text" id="walletAddress" class="wallet-input" placeholder="Enter wallet address..." />
+                                <input type="text" id="xAccount" class="wallet-input" placeholder="Enter X account..." />
+                                <input type="number" id="season1Points" class="wallet-input" placeholder="Season 1 ranking (1-1000)..." min="1" max="1000" />
+                                <input type="number" id="season2Points" class="wallet-input" placeholder="Season 2 ranking (1-1000)..." min="1" max="1000" />
+                                <button id="checkWallet" class="check-wallet-btn">Check</button>
+                            </div>
+                            <p class="rank-info">Rank #<span id="rankNumber">0</span> • <span id="totalXP">0</span> XP</p>
+                            <div class="current-rank">
+                                <div class="rank-icon">
+                                    <div class="hex-icon">
+                                        <div class="stack-lines">
+                                            <div class="line"></div>
+                                            <div class="line"></div>
+                                            <div class="line"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="rank-details">
+                                    <span class="rank-title" id="rankTitle">Private</span>
+                                    <span class="rank-level" id="rankLevel">Level 1</span>
+                                </div>
+                            </div>
+                            <div class="season-ranks">
+                                <div class="season-rank">
+                                    <span class="season-label">Season 1:</span>
+                                    <span class="season-value" id="season1Rank">Not ranked</span>
+                                    <span class="season-points" id="season1PointsDisplay">0 ranking</span>
+                                </div>
+                                <div class="season-rank">
+                                    <span class="season-label">Season 2:</span>
+                                    <span class="season-value" id="season2Rank">Not ranked</span>
+                                    <span class="season-points" id="season2PointsDisplay">0 ranking</span>
+                                </div>
+                            </div>
+                            <div class="token-reward" id="tokenReward" style="display: none;">
+                                <div class="token-icon">🪙</div>
+                                <span class="token-amount" id="tokenAmount">0 U</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="next-rank-section">
+                        <div class="next-rank-info">
+                            <div class="arrow">→</div>
+                            <span class="next-rank" id="nextRank">Corporal</span>
+                        </div>
+                        <div class="xp-progress">
+                            <span class="xp-text"><span id="currentXP">0</span> / <span id="nextLevelXP">100</span> XP</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mission Stats -->
+            <div class="stats-card">
+                <div class="card-header">
+                    <h2 class="card-title">Mission Stats</h2>
+                    <button class="view-all-btn">View all</button>
+                </div>
+                <div class="stats-content">
+                    <div class="stat-item">
+                        <span class="stat-label">Completed Missions</span>
+                        <span class="stat-value">0 / 7</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Total XP</span>
+                        <div class="xp-display">
+                            <span class="xp-current">0</span>
+                            <span class="xp-total"> / 135</span>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Completion Rate</span>
+                        <span class="completion-rate">0%</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Achievement Stats -->
+            <div class="stats-card">
+                <div class="card-header">
+                    <h2 class="card-title">Achievement Stats</h2>
+                    <button class="view-all-btn">View all</button>
+                </div>
+                <div class="stats-content">
+                    <div class="stat-item">
+                        <span class="stat-label">Achievements</span>
+                        <span class="stat-value">0 / 141</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Total XP</span>
+                        <div class="xp-display">
+                            <span class="xp-current">0</span>
+                            <span class="xp-total"> / 1290</span>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Completion Rate</span>
+                        <span class="completion-rate">0%</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reward Stats -->
+            <div class="stats-card">
+                <div class="card-header">
+                    <h2 class="card-title">Reward Stats</h2>
+                    <button class="view-all-btn">View all</button>
+                </div>
+                <div class="stats-content">
+                    <div class="stat-item">
+                        <span class="stat-label">Claimed Rewards</span>
+                        <span class="stat-value">0 / 32</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Queued Rewards</span>
+                        <span class="xp-current">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Claim Rate</span>
+                        <span class="completion-rate">0%</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Wallet Stats -->
+            <div class="wallet-card">
+                <div class="card-header">
+                    <h2 class="card-title">Wallet Stats</h2>
+                    <button class="view-wallets-btn">View wallets</button>
+                </div>
+                <div class="wallet-stats">
+                    <div class="wallet-stat">
+                        <span class="stat-label">Total Wallets</span>
+                        <span class="stat-value">1</span>
+                    </div>
+                    <div class="wallet-stat">
+                        <span class="stat-label">Cosmos Wallets</span>
+                        <span class="stat-value">0</span>
+                    </div>
+                    <div class="wallet-stat">
+                        <span class="stat-label">EVM Wallets</span>
+                        <span class="stat-value">1</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
