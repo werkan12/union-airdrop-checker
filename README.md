@@ -1,4 +1,4 @@
-# Dashboard - KINGANDNFT
+# Dashboard - UNION Checker
 
 Bu proje, modern ve pixel perfect bir dashboard tasarımının HTML/CSS implementasyonudur. Orijinal tasarımdan birebir kopyalanmış, koyu tema ile tasarlanmış profesyonel bir kullanıcı arayüzüdür.
 
@@ -95,5 +95,6 @@ Bu dashboard tasarımı, modern web tasarım trendlerini takip eden profesyonel 
 Bu proje eğitim amaçlı oluşturulmuştur. Ticari kullanım için gerekli izinleri almanız gerekebilir.
 
 ---
+
 
 **Not**: Bu dashboard tamamen statiktir ve herhangi bir backend bağlantısı gerektirmez. Tüm veriler HTML içinde sabit olarak tanımlanmıştır. 
